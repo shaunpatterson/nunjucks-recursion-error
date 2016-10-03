@@ -34,9 +34,10 @@ import {
 } from '../utils/create-webpack-config';
 
 const getFeatureEntryPoint = curryN(3, join)(SRC, __, 'js/index.js');
+const featureEntryPoints = map(getFeatureEntryPoint, ENABLED_FEATURES);
 
 function getWebpackStream(config, src) {
-    console.log(config);
+    console.log('this is src');
     console.log(src);
     return gulp.src(src)
         .pipe(webpackStream(config, webpack))
@@ -44,5 +45,5 @@ function getWebpackStream(config, src) {
 }
 
 gulp.task('webpack', done => {
-    return getWebpackStream(webpackDevConfig(), getFeatureEntryPoint());
+    return getWebpackStream(webpackDevConfig(), featureEntryPoints);
 });
