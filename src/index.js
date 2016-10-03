@@ -1,4 +1,4 @@
-import 'entry-point' as template
+import template from './templates/test.j2';
 
 const model = {
     product: {
