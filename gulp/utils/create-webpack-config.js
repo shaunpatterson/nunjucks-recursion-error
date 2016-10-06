@@ -109,7 +109,7 @@ const loadersOptions = () => {
                     exclude: /(.idea|brandweb|bower_components|dist|gulp|keyrings|node_modules|urbnweb|venv)/,
                     loader: 'nunjucks-loader',
                     query: {
-                        //jinjaCompat: true,
+                        jinjaCompat: true,
                     }
                 },
                 {

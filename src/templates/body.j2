@@ -1,0 +1,40 @@
+{% from './macros.j2' import test2, test3 %}
+
+
+<div>
+    More stuff
+
+    {{ test2() }}
+    {{ test3() }}
+
+    {% if quickshop.product.something %}
+        {% if quickshop.product.something %}
+            {% if quickshop.product.something %}
+                {% if quickshop.product.something %}
+
+                {% endif %}
+
+            {% endif %}
+
+        {% endif %}
+
+    {% endif %}
+
+    {% include './price.j2' %}
+    {% include './swatches.j2' %}
+    {% include './meta.j2' %}
+    {% include './controls.j2' %}
+    {% include './image-viewer.j2' %}
+    {% include './price.j2' %}
+    {% include './price.j2' %}
+    {% include './swatches.j2' %}
+    {% include './meta.j2' %}
+    {% include './controls.j2' %}
+    {% include './image-viewer.j2' %}
+    {% include './full-details.j2' %}
+    {% include './controls.j2' %}
+    {% include './image-viewer.j2' %}
+    {% include './full-details.j2' %}
+
+
+</div>

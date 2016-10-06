@@ -5,6 +5,7 @@ gulp.task('build', ['build:dev']);
 
 gulp.task('build:dev', done => runSequence(
     'clean',
+    'copy',
     'webpack',
     done
 ));

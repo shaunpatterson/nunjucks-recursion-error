@@ -1,0 +1,15 @@
+{% macro test5() %}
+    {{ quickshop.product.a }}
+    {{ quickshop.product.b }}
+    {{ quickshop.product.c }}
+    {{ quickshop.product.d }}
+
+    {% if quickshop.product.a %}
+        {% if quickshop.product.b %}
+             {% if quickshop.product.c %}
+                 {{ quickshop.product.a }}
+             {% endif %}
+        {% endif %}
+    {% endif %}
+    MACRO 5
+{% endmacro %}
