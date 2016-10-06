@@ -1,16 +1,4 @@
 {
-  "name": "ANCom",
-  "description": "Anthropologie.com",
-  "version": "1.0.0",
-  "homepage": "http://www.anthropologie.com/",
-  "repository": "https://github.com/urbn/ANCom.git",
-  "private": true,
-  "main": "brandweb/dist/js/common.js",
-  "scripts": {
-    "integration": "./node_modules/selenium-standalone/bin/selenium-standalone install && /usr/bin/screen -d -m ./node_modules/selenium-standalone/bin/selenium-standalone start &&  gulp wdio && pkill -f selenium-standalone",
-    "integration-smoke": "./node_modules/selenium-standalone/bin/selenium-standalone install && /usr/bin/screen -d -m ./node_modules/selenium-standalone/bin/selenium-standalone start &&  gulp wdio --smoke && pkill -f selenium-standalone",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "devDependencies": {
     "babel-core": "6.14.0",
     "babel-eslint": "6.1.2",
