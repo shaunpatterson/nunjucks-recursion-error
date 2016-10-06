@@ -1,8 +1,12 @@
-import 'entry-point' as template
+import template from './templates/test.j2';
 
 const model = {
     product: {
     }
 };
 
-const templateString = template.render(model);
+window.onclick = (e)=> {
+    console.log('click');
+    const templateString = template.render(model);
+    console.log(templateString);
+}

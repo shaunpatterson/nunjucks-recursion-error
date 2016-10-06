@@ -13,8 +13,8 @@ import {
     propOr,
     split
 } from 'ramda';
-import webpack from 'webpack';
-import webpackStream from 'webpack-stream';
+// import webpack from 'webpack';
+import webpack from 'webpack-stream';
 import { argv } from 'yargs';
 
 import {
@@ -23,6 +23,7 @@ import {
     COMMON_BUNDLE_FILENAME,
     TEMP_FEATURES
 } from '../config';
+
 import {
     ENABLED_FEATURES,
     FEATURE_BUNDLES,
@@ -33,16 +34,49 @@ import {
     webpackWatchConfig
 } from '../utils/create-webpack-config';
 
-const getFeatureEntryPoint = curryN(3, join)(SRC, __, 'js/index.js');
+const featureEntryPoint = `../../src/index.js`;
 
 function getWebpackStream(config, src) {
-    console.log(config);
+    console.log('this is src');
     console.log(src);
     return gulp.src(src)
         .pipe(webpackStream(config, webpack))
         .pipe(gulp.dest(join(DIST, 'js')));
 }
 
+// gulp.task('webpack', done => {
+//     return getWebpackStream(webpackDevConfig(), featureEntryPoint);
+// });
+
 gulp.task('webpack', done => {
-    return getWebpackStream(webpackDevConfig(), getFeatureEntryPoint());
-});
+    return gulp.src('src/index.js')
+        .pipe(webpack({
+            watch: true,
+            module: {
+                loaders: [
+                    {
+                        test: /\.jsx?$/,
+                        exclude: /(.idea|brandweb|bower_components|dist|keyrings|node_modules|urbnweb|venv)/,
+                        loader: 'babel-loader',
+                        query: {
+                            cacheDirectory: '.babel'
+                        }
+                    },
+                    {
+                        test: /\.j2$/,
+                        exclude: /(.idea|brandweb|bower_components|dist|gulp|keyrings|node_modules|urbnweb|venv)/,
+                        loader: 'nunjucks-loader',
+                        query: {
+                            //jinjaCompat: true,
+                        }
+                    },
+                    {
+                        test: /\.json$/,
+                        loader: 'json-loader'
+                    }
+                ]
+            },
+            output: {filename: 'app.js'} 
+        }))
+        .pipe(gulp.dest('dist/'));
+})
